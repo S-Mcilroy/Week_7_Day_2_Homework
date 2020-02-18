@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Currency Convertor</title>
+    <script type="text/javascript" src="./js/bundle.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Euros Currency Convertor:</h1>
+
+      <label for="amount-to-exchange">Enter amount to exchange:</label>
+      <input type="number" v-model.number="amountToExchange">
+      <select class="drop-rates" name="rates-exhanger" v-model.number="currenyToExchange">
+      <option disabled value="">Select a Currency</option>
+      <option v-for="(value, name) in eurRate" :value=value>{{name}}</option>
+      <option v-for="(value, name) in rates" :value=value>{{name}}</option>
+      </select>
+
+      <section>
+        <label for="rates-exchanger">Select Curreny to Convert to:</label>
+        <select class="drop-rates" name="rates-exhanger" v-model.number="selectedCurrency">
+          <option disabled value="">Select a Currency</option>
+          <option v-for="(value, name) in eurRate" :value=value>{{name}}</option>
+          <option v-for="(value, name) in rates" :value=value>{{name}}</option>
+        </select>
+      </section>
+
+      <div class="selectedCurrency" v-if="selectedCurrency">
+        <h2>Amount Exchanged: {{exchanged}} {{getKeyByValue(rates, selectedCurrency)}}</h2>
+      </div>
+
+
+  </body>
+</html>
